@@ -9,16 +9,16 @@ import java.util.Map;
 import java.util.Set;
 import java.util.UUID;
 
-public class AnnotationBasedParamValidatorImpl implements ParamValidator {
+public class AnnotationBasedParamValidator {
 
-    private final Map<Class<? extends Annotation>, FieldValidator> validationFunctions;
+    private final Map<Class<? extends Annotation>, FieldValidator> fieldValidationFunctions;
     private final Set<Class<? extends Annotation>> supportedFieldAnnotations;
 
-    public AnnotationBasedParamValidatorImpl(Map<Class<? extends Annotation>, FieldValidator> validationFunctions) {
-        this.validationFunctions = validationFunctions;
-        supportedFieldAnnotations = this.validationFunctions.keySet();
+    public AnnotationBasedParamValidator(Map<Class<? extends Annotation>, FieldValidator> fieldValidationFunctions) {
+        this.fieldValidationFunctions = fieldValidationFunctions;
+        supportedFieldAnnotations = this.fieldValidationFunctions.keySet();
     }
-    @Override
+
     public void validate(Object param) {
         if (param == null)
             throw new ValidationException("Passed param is null");
@@ -33,7 +33,7 @@ public class AnnotationBasedParamValidatorImpl implements ParamValidator {
             field.setAccessible(true);
             supportedFieldAnnotations.stream()
                     .filter(field::isAnnotationPresent)
-                    .map(validationFunctions::get)
+                    .map(fieldValidationFunctions::get)
                     .forEach(fieldValidator -> fieldValidator.validate(param, field));
         }
     }

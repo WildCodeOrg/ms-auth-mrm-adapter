@@ -3,26 +3,28 @@ package org.skyhigh.msauthmrmadapter.validation.exceptions;
 import lombok.AllArgsConstructor;
 
 @AllArgsConstructor
-public class RequiredParameterDidNotSetException extends RequestException{
-    private final String parameterName;
+public class FlkException extends RequestException {
+    private final String flkCode;
+    private final String parameterPath;
+    private final String flkMessage;
 
     @Override
     public String getCode() {
-        return "01";
+        return flkCode;
     }
 
     @Override
     public String getParameterPath() {
-        return null;
+        return parameterPath;
     }
 
     @Override
     public String getParameterName() {
-        return parameterName;
+        return null;
     }
 
     @Override
     public String getMessage() {
-        return "Required parameter was not passed";
+        return flkMessage;
     }
 }

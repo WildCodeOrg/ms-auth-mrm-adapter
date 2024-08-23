@@ -2,6 +2,7 @@ package org.skyhigh.msauthmrmadapter.rest.controller;
 
 import org.skyhigh.msauthmrmadapter.model.dto.AuthorityDTO;
 import org.skyhigh.msauthmrmadapter.service.AuthorityService;
+import org.skyhigh.msauthmrmadapter.validation.springAspect.annotationsApi.ValidParams;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,6 +24,7 @@ public class RestController {
     }
 
     @GetMapping(value = "/{login}")
+    @ValidParams
     ResponseEntity<?> getAuthorities(@PathVariable("login") String login) {
         log.info("initiated getAuthorities: " + login);
         AuthorityDTO result = authorityService.getAuthorities(login);

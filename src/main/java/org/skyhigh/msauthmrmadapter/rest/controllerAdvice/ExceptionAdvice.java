@@ -1,6 +1,7 @@
 package org.skyhigh.msauthmrmadapter.rest.controllerAdvice;
 
 import org.skyhigh.msauthmrmadapter.model.dto.ErrorDTO;
+import org.skyhigh.msauthmrmadapter.validation.exceptions.FlkException;
 import org.skyhigh.msauthmrmadapter.validation.exceptions.RequestException;
 import org.skyhigh.msauthmrmadapter.validation.exceptions.RequiredParameterDidNotSetException;
 import org.springframework.http.HttpStatus;
@@ -12,13 +13,14 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 
 @ControllerAdvice
 public class ExceptionAdvice extends ResponseEntityExceptionHandler {
-
     @ResponseBody
-    @ExceptionHandler({RequiredParameterDidNotSetException.class})
+    @ExceptionHandler({RequiredParameterDidNotSetException.class, FlkException.class})
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     protected ErrorDTO requestParameterExceptionHandler(RequestException ex) {
         return ErrorDTO.builder()
                 .code(ex.getCode())
+                .attributePath(ex.getParameterPath())
+                .attributeName(ex.getParameterName())
                 .message(ex.getMessage())
                 .build();
     }
