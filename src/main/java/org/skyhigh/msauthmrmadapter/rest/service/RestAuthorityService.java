@@ -1,9 +1,9 @@
-package org.skyhigh.msauthmrmadapter.service;
+package org.skyhigh.msauthmrmadapter.rest.service;
 
 import jakarta.validation.constraints.NotNull;
 import org.skyhigh.msauthmrmadapter.model.dto.AuthorityDTO;
 
-public interface AuthorityService {
+public interface RestAuthorityService {
     /**
      * Метод получения доступов (authority) пользователя
      * @param userLogin - логин пользователя, доступы которого необходимо получить

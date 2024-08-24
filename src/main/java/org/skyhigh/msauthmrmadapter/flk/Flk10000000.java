@@ -7,7 +7,7 @@ import java.text.MessageFormat;
 /**
  * Flk10000000 - ФЛК на проверку длины логина
  */
-public class Flk10000000 extends CommonFlk {
+public class Flk10000000 extends CommonRestFlk {
     private final Integer minLoginLength = 8;
     private final Integer maxLoginLength = 20;
 

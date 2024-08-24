@@ -14,7 +14,7 @@ import java.util.List;
 @PropertySource("classpath:config/application-flk-config.yml")
 @ConfigurationProperties("flk.settings")
 public class FlkConfiguration {
-    @Value("${flk.settings.active_flk}")
+    @Value("${flk.settings.active-flk}")
     private List<String> activeFlkNames;
 
     @Bean("ActiveFlkList")

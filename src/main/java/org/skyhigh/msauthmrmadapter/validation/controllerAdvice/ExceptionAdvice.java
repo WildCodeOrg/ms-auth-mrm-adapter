@@ -1,4 +1,4 @@
-package org.skyhigh.msauthmrmadapter.rest.controllerAdvice;
+package org.skyhigh.msauthmrmadapter.validation.controllerAdvice;
 
 import org.skyhigh.msauthmrmadapter.model.dto.Error;
 import org.skyhigh.msauthmrmadapter.model.dto.ErrorsDTO;

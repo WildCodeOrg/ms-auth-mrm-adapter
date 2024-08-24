@@ -1,0 +1,36 @@
+syntax = "proto3";
+
+package authority;
+
+option java_package = "org.skyhigh.grpc.authority";
+option java_multiple_files = true;
+
+message AuthorityRequest {
+  string login = 1;
+}
+
+message AuthorityResponse {
+  oneof response {
+    AuthoritySuccessResponse authority_success_response = 1;
+    AuthorityExceptionResponse authority_exception_response = 2;
+  }
+}
+
+enum AuthorityErrorCode {
+  INCORRECT_LOGIN_LENGTH = 0;
+  USING_SQL_INJECTIONS_IN_LOGIN = 1;
+  LOGIN_CANNOT_BE_NULL = 2;
+}
+
+message AuthoritySuccessResponse {
+  repeated string authority = 1;
+}
+
+message AuthorityExceptionResponse {
+  repeated AuthorityErrorCode error_code = 1;
+}
+
+service AuthorityService {
+  // unary
+  rpc getUserAuthorities(AuthorityRequest) returns (AuthorityResponse) {};
+}

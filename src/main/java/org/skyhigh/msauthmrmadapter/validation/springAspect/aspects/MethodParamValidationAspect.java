@@ -4,6 +4,7 @@ import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.reflect.CodeSignature;
+import org.skyhigh.msauthmrmadapter.validation.validationEnums.ApiValidationType;
 import org.skyhigh.msauthmrmadapter.validation.validators.paramValidator.AnnotationBasedParamValidator;
 import org.skyhigh.msauthmrmadapter.validation.validators.paramValidator.FlkBasedParamValidator;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -34,7 +35,7 @@ public class MethodParamValidationAspect {
 
         for (int i = 0; i < parameterNames.length; i++) {
             annotationBasedValidator.validate(joinPoint.getArgs()[i]);
-            flkBasedValidator.validate(joinPoint.getArgs()[i], parameterNames[i], activeFlkList);
+            flkBasedValidator.validate(joinPoint.getArgs()[i], parameterNames[i], ApiValidationType.REST, activeFlkList);
         }
     }
 }
