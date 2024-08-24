@@ -20,8 +20,8 @@ public class Flk10000000 extends CommonFlk {
                 "Длина логина должна быть не менее {0} и не более {1} символов."
         );
 
-        super.setFlkMessage(MessageFormat.format(
-                super.getFlkMessage(),
+        setFlkMessage(MessageFormat.format(
+                getFlkMessage(),
                 minLoginLength,
                 maxLoginLength
         ));
@@ -32,9 +32,9 @@ public class Flk10000000 extends CommonFlk {
         if (isSuitable(entityClass, parameterName))
             if (((String) entity).length() < minLoginLength || ((String) entity).length() > maxLoginLength)
                 throw new FlkException(
-                        super.flkCode,
-                        super.attributePath,
-                        super.flkMessage
+                        getFlkCode(),
+                        getAttributePath(),
+                        getFlkMessage()
                 );
     }
 }

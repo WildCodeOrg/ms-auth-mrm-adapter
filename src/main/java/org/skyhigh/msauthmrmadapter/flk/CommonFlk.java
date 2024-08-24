@@ -6,11 +6,11 @@ import lombok.Setter;
 @Setter
 @Getter
 public abstract class CommonFlk {
-    protected String parameterName;
-    protected Class<?> entityClass;
-    protected String flkCode;
-    protected String attributePath;
-    protected String flkMessage;
+    private String parameterName;
+    private Class<?> entityClass;
+    private String flkCode;
+    private String attributePath;
+    private String flkMessage;
 
     public CommonFlk(
             String parameterName,
