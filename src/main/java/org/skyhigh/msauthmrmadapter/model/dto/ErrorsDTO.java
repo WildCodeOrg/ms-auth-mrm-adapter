@@ -6,14 +6,13 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class ErrorDTO {
-    private String code;
-    private String attributePath;
-    private String attributeName;
-    private String message;
+public class ErrorsDTO {
+    private List<Error> errors;
 }

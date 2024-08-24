@@ -1,5 +1,10 @@
 package org.skyhigh.msauthmrmadapter.flk;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Setter
+@Getter
 public abstract class CommonFlk {
     protected String parameterName;
     protected Class<?> entityClass;
